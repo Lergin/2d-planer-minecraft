@@ -1,0 +1,398 @@
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../../bower_components/core-label/core-label.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+
+
+
+
+<polymer-element name="minecraft-2d-plan" attributes="fieldborder,height,width">
+    <template>
+        <style>
+            paper-checkbox {
+                padding: 20px 20px 20px 0;
+            }   
+        </style>
+        <div center horizontal layout>
+        <paper-dropdown-menu label="Material">
+            <paper-dropdown class="dropdown" layered>
+                <core-menu class="menu" selectedItem="{{material}}">
+                    <paper-item>anvil_top_damaged_0</paper-item>
+                    <paper-item>anvil_top_damaged_1</paper-item>
+                    <paper-item>anvil_top_damaged_2</paper-item>
+                    <paper-item>bedrock</paper-item>
+                    <paper-item>bed_feet_top</paper-item>
+                    <paper-item>bed_head_top</paper-item>
+                    <paper-item>bookshelf</paper-item>
+                    <paper-item>brewing_stand</paper-item>
+                    <paper-item>brewing_stand_base</paper-item>
+                    <paper-item>brick</paper-item>
+                    <paper-item>cactus_top</paper-item>
+                    <paper-item>cake_top</paper-item>
+                    <paper-item>carrots_stage_3</paper-item>
+                    <paper-item>cauldron_side</paper-item>
+                    <paper-item>clay</paper-item>
+                    <paper-item>coal_block</paper-item>
+                    <paper-item>coal_ore</paper-item>
+                    <paper-item>coarse_dirt</paper-item>
+                    <paper-item>cobblestone</paper-item>
+                    <paper-item>cobblestone_mossy</paper-item>
+                    <paper-item>cocoa_stage_2</paper-item>
+                    <paper-item>command_block</paper-item>
+                    <paper-item>comparator_off</paper-item>
+                    <paper-item>comparator_on</paper-item>
+                    <paper-item>crafting_table_top</paper-item>
+                    <paper-item>daylight_detector_inverted_top</paper-item>
+                    <paper-item>daylight_detector_top</paper-item>
+                    <paper-item>deadbush</paper-item>
+                    <paper-item>diamond_block</paper-item>
+                    <paper-item>diamond_ore</paper-item>
+                    <paper-item>dirt</paper-item>
+                    <paper-item>dirt_podzol_top</paper-item>
+                    <paper-item>dispenser_front_horizontal</paper-item>
+                    <paper-item>door_acacia_lower</paper-item>
+                    <paper-item>door_acacia_upper</paper-item>
+                    <paper-item>door_birch_lower</paper-item>   
+                    <paper-item>door_birch_upper</paper-item>
+                    <paper-item>door_dark_oak_lower</paper-item>
+                    <paper-item>door_dark_oak_upper</paper-item>
+                    <paper-item>door_iron_lower</paper-item>
+                    <paper-item>door_iron_upper</paper-item>
+                    <paper-item>door_jungle_lower</paper-item>
+                    <paper-item>door_jungle_upper</paper-item>
+                    <paper-item>door_spruce_lower</paper-item>
+                    <paper-item>door_spruce_upper</paper-item>
+                    <paper-item>door_wood_lower</paper-item>
+                    <paper-item>door_wood_upper</paper-item>
+                    <paper-item>double_plant_fern_bottom</paper-item>
+                    <paper-item>double_plant_fern_top</paper-item>
+                    <paper-item>double_plant_grass_bottom</paper-item>
+                    <paper-item>double_plant_grass_top</paper-item>
+                    <paper-item>double_plant_paeonia_bottom</paper-item>
+                    <paper-item>double_plant_paeonia_top</paper-item>
+                    <paper-item>double_plant_rose_bottom</paper-item>
+                    <paper-item>double_plant_rose_top</paper-item>
+                    <paper-item>double_plant_sunflower_back</paper-item>
+                    <paper-item>double_plant_sunflower_bottom</paper-item>
+                    <paper-item>double_plant_sunflower_front</paper-item>
+                    <paper-item>double_plant_sunflower_top</paper-item>
+                    <paper-item>double_plant_syringa_bottom</paper-item>
+                    <paper-item>double_plant_syringa_top</paper-item>
+                    <paper-item>dragon_egg</paper-item>
+                    <paper-item>dropper_front_horizontal</paper-item>
+                    <paper-item>emerald_block</paper-item>
+                    <paper-item>emerald_ore</paper-item>
+                    <paper-item>enchanting_table_top</paper-item>
+                    <paper-item>endframe_top</paper-item>
+                    <paper-item>end_stone</paper-item>
+                    <paper-item>farmland_dry</paper-item>
+                    <paper-item>farmland_wet</paper-item>          
+                    <paper-item>fern</paper-item>
+                    <paper-item>flower_allium</paper-item>
+                    <paper-item>flower_blue_orchid</paper-item>
+                    <paper-item>flower_dandelion</paper-item>
+                    <paper-item>flower_houstonia</paper-item>
+                    <paper-item>flower_oxeye_daisy</paper-item>
+                    <paper-item>flower_paeonia</paper-item>
+                    <paper-item>flower_rose</paper-item>
+                    <paper-item>flower_tulip_orange</paper-item>
+                    <paper-item>flower_tulip_pink</paper-item>
+                    <paper-item>flower_tulip_red</paper-item>
+                    <paper-item>flower_tulip_white</paper-item>
+                    <paper-item>furnace_front_off</paper-item>
+                    <paper-item>furnace_front_on</paper-item>
+                    <paper-item>furnace_top</paper-item>
+                    <paper-item>glass</paper-item>
+                    <paper-item>glass_black</paper-item>
+                    <paper-item>glass_blue</paper-item>
+                    <paper-item>glass_brown</paper-item>
+            <paper-item>glass_cyan</paper-item>
+            <paper-item>glass_gray</paper-item> 
+            <paper-item>glass_green</paper-item>
+            <paper-item>glass_light_blue</paper-item>
+            <paper-item>glass_lime</paper-item>
+            <paper-item>glass_magenta</paper-item>
+            <paper-item>glass_orange</paper-item>
+            <paper-item>glass_pane_top</paper-item>
+            <paper-item>glass_pane_top_black</paper-item>
+            <paper-item>glass_pane_top_blue</paper-item>
+            <paper-item>glass_pane_top_brown</paper-item>
+            <paper-item>glass_pane_top_cyan</paper-item>
+            <paper-item>glass_pane_top_gray</paper-item>    
+            <paper-item>glass_pane_top_green</paper-item>
+            <paper-item>glass_pane_top_light_blue</paper-item>
+            <paper-item>glass_pane_top_lime</paper-item>
+            <paper-item>glass_pane_top_magenta</paper-item>
+            <paper-item>glass_pane_top_orange</paper-item>
+            <paper-item>glass_pane_top_pink</paper-item>
+            <paper-item>glass_pane_top_purple</paper-item>
+            <paper-item>glass_pane_top_red</paper-item>
+            <paper-item>glass_pane_top_silver</paper-item>
+            <paper-item>glass_pane_top_white</paper-item>
+            <paper-item>glass_pane_top_yellow</paper-item>
+            <paper-item>glass_pink</paper-item> 
+            <paper-item>glass_purple</paper-item>
+            <paper-item>glass_red</paper-item>
+            <paper-item>glass_silver</paper-item>
+            <paper-item>glass_white</paper-item>
+            <paper-item>glass_yellow</paper-item>
+            <paper-item>glowstone</paper-item>
+            <paper-item>gold_block</paper-item>
+            <paper-item>gold_ore</paper-item>
+            <paper-item>grass_side</paper-item>
+            <paper-item>grass_side_snowed</paper-item>
+            <paper-item>grass_top</paper-item>
+            <paper-item>gravel</paper-item>
+            <paper-item>hardened_clay</paper-item>
+            <paper-item>hardened_clay_stained_black</paper-item>
+            <paper-item>hardened_clay_stained_blue</paper-item>
+            <paper-item>hardened_clay_stained_brown</paper-item>
+            <paper-item>hardened_clay_stained_cyan</paper-item>
+            <paper-item>hardened_clay_stained_gray</paper-item>
+            <paper-item>hardened_clay_stained_green</paper-item>
+            <paper-item>hardened_clay_stained_light_blue</paper-item>
+            <paper-item>hardened_clay_stained_lime</paper-item>
+            <paper-item>hardened_clay_stained_magenta</paper-item>
+            <paper-item>hardened_clay_stained_orange</paper-item>
+            <paper-item>hardened_clay_stained_pink</paper-item>
+            <paper-item>hardened_clay_stained_purple</paper-item>
+            <paper-item>hardened_clay_stained_red</paper-item>
+            <paper-item>hardened_clay_stained_silver</paper-item>
+            <paper-item>hardened_clay_stained_white</paper-item>
+            <paper-item>hardened_clay_stained_yellow</paper-item>
+            <paper-item>hay_block_top</paper-item>
+            <paper-item>hopper_inside</paper-item>
+            <paper-item>hopper_outside</paper-item>
+            <paper-item>hopper_top</paper-item>
+            <paper-item>ice</paper-item>
+            <paper-item>ice_packed</paper-item>
+            <paper-item>iron_bars</paper-item>
+            <paper-item>iron_block</paper-item>
+            <paper-item>iron_ore</paper-item>
+            <paper-item>iron_trapdoor</paper-item>
+            <paper-item>itemframe_background</paper-item>
+            <paper-item>jukebox_side</paper-item>
+            <paper-item>jukebox_top</paper-item>
+            <paper-item>ladder</paper-item>
+            <paper-item>lapis_block</paper-item>
+            <paper-item>lapis_ore</paper-item>
+            <paper-item>leaves_acacia</paper-item>
+            <paper-item>leaves_big_oak</paper-item>
+            <paper-item>leaves_birch</paper-item>
+            <paper-item>leaves_jungle</paper-item>
+            <paper-item>leaves_oak</paper-item>
+            <paper-item>leaves_spruce</paper-item>
+            <paper-item>lever</paper-item>
+            <paper-item>log_acacia</paper-item>
+            <paper-item>log_acacia_top</paper-item>
+            <paper-item>log_big_oak</paper-item>
+            <paper-item>log_big_oak_top</paper-item>
+            <paper-item>log_birch</paper-item>
+            <paper-item>log_birch_top</paper-item>
+            <paper-item>log_jungle</paper-item>
+            <paper-item>log_jungle_top</paper-item>
+            <paper-item>log_oak</paper-item>
+            <paper-item>log_oak_top</paper-item>
+            <paper-item>log_spruce</paper-item>
+            <paper-item>log_spruce_top</paper-item>
+            <paper-item>melon_side</paper-item>
+            <paper-item>melon_stem_connected</paper-item>
+            <paper-item>melon_stem_disconnected</paper-item>
+            <paper-item>melon_top</paper-item>
+            <paper-item>mob_spawner</paper-item>
+            <paper-item>mushroom_block_inside</paper-item>
+            <paper-item>mushroom_block_skin_brown</paper-item>
+            <paper-item>mushroom_block_skin_red</paper-item>
+            <paper-item>mushroom_block_skin_stem</paper-item>
+            <paper-item>mushroom_brown</paper-item>
+            <paper-item>mushroom_red</paper-item>
+            <paper-item>mycelium_side</paper-item>
+            <paper-item>mycelium_top</paper-item>
+            <paper-item>netherrack</paper-item>
+            <paper-item>nether_brick</paper-item>
+            <paper-item>nether_wart_stage_0</paper-item>
+            <paper-item>nether_wart_stage_1</paper-item>
+            <paper-item>nether_wart_stage_2</paper-item>
+            <paper-item>noteblock</paper-item>
+            <paper-item>obsidian</paper-item>
+            <paper-item>piston_bottom</paper-item>
+            <paper-item>piston_inner</paper-item>
+            <paper-item>piston_side</paper-item>
+            <paper-item>piston_top_normal</paper-item>
+            <paper-item>piston_top_sticky</paper-item>
+            <paper-item>planks_acacia</paper-item>
+            <paper-item>planks_big_oak</paper-item>
+            <paper-item>planks_birch</paper-item>
+            <paper-item>planks_jungle</paper-item>
+            <paper-item>planks_oak</paper-item>
+            <paper-item>planks_spruce</paper-item>
+            <paper-item>portal</paper-item>
+            <paper-item>potatoes_stage_0</paper-item>
+            <paper-item>potatoes_stage_1</paper-item>
+            <paper-item>potatoes_stage_2</paper-item>
+            <paper-item>potatoes_stage_3</paper-item>
+            <paper-item>prismarine_bricks</paper-item>
+            <paper-item>prismarine_dark</paper-item>
+            <paper-item>pumpkin_face_off</paper-item>
+            <paper-item>pumpkin_face_on</paper-item>
+            <paper-item>pumpkin_side</paper-item>
+            <paper-item>pumpkin_stem_connected</paper-item>
+            <paper-item>pumpkin_stem_disconnected</paper-item>
+            <paper-item>pumpkin_top</paper-item>
+            <paper-item>quartz_block_bottom</paper-item>
+            <paper-item>quartz_block_chiseled</paper-item>
+            <paper-item>quartz_block_chiseled_top</paper-item>
+            <paper-item>quartz_block_lines</paper-item> 
+            <paper-item>quartz_block_lines_top</paper-item>
+            <paper-item>quartz_block_side</paper-item>
+            <paper-item>quartz_block_top</paper-item>
+            <paper-item>quartz_ore</paper-item>
+            <paper-item>rail_activator</paper-item>
+            <paper-item>rail_activator_powered</paper-item> 
+            <paper-item>rail_detector</paper-item>
+            <paper-item>rail_detector_powered</paper-item>
+            <paper-item>rail_golden</paper-item>
+            <paper-item>rail_golden_powered</paper-item>
+            <paper-item>rail_normal</paper-item>
+            <paper-item>rail_normal_turned</paper-item>
+            <paper-item>redstone_block</paper-item>
+            <paper-item>redstone_dust_cross</paper-item>
+            <paper-item>redstone_dust_cross_overlay</paper-item>
+            <paper-item>redstone_dust_line</paper-item>
+            <paper-item>redstone_dust_line_overlay</paper-item>
+            <paper-item>redstone_lamp_off</paper-item>
+            <paper-item>redstone_lamp_on</paper-item>
+            <paper-item>redstone_ore</paper-item>
+            <paper-item>redstone_torch_off</paper-item>
+            <paper-item>redstone_torch_on</paper-item>
+            <paper-item>red_sand</paper-item>
+            <paper-item>red_sandstone_bottom</paper-item>
+            <paper-item>red_sandstone_carved</paper-item>
+            <paper-item>red_sandstone_normal</paper-item>   
+            <paper-item>red_sandstone_smooth</paper-item>
+            <paper-item>red_sandstone_top</paper-item>
+            <paper-item>reeds</paper-item>
+            <paper-item>repeater_off</paper-item>
+            <paper-item>repeater_on</paper-item>
+            <paper-item>sand</paper-item>   
+            <paper-item>sandstone_bottom</paper-item>
+            <paper-item>sandstone_carved</paper-item>
+            <paper-item>sandstone_normal</paper-item>
+            <paper-item>sandstone_smooth</paper-item>   
+            <paper-item>sandstone_top</paper-item>
+            <paper-item>sapling_acacia</paper-item>
+            <paper-item>sapling_birch</paper-item>
+            <paper-item>sapling_jungle</paper-item>
+            <paper-item>sapling_oak</paper-item>
+            <paper-item>sapling_roofed_oak</paper-item>
+            <paper-item>sapling_spruce</paper-item>
+            <paper-item>sea_lantern</paper-item>
+            <paper-item>slime</paper-item>
+            <paper-item>snow</paper-item>
+            <paper-item>soul_sand</paper-item>
+            <paper-item>sponge</paper-item>
+            <paper-item>sponge_wet</paper-item>
+            <paper-item>stone</paper-item>
+            <paper-item>stonebrick</paper-item>
+            <paper-item>stonebrick_carved</paper-item>
+            <paper-item>stonebrick_cracked</paper-item>
+            <paper-item>stonebrick_mossy</paper-item>
+            <paper-item>stone_andesite</paper-item>
+            <paper-item>stone_andesite_smooth</paper-item>
+            <paper-item>stone_diorite</paper-item>
+            <paper-item>stone_diorite_smooth</paper-item>
+            <paper-item>stone_granite</paper-item>
+            <paper-item>stone_granite_smooth</paper-item>
+            <paper-item>stone_slab_side</paper-item>
+            <paper-item>stone_slab_top</paper-item>
+            <paper-item>tallgrass</paper-item>
+            <paper-item>tnt_bottom</paper-item>
+            <paper-item>tnt_side</paper-item>
+            <paper-item>tnt_top</paper-item>
+            <paper-item>torch_on</paper-item>
+            <paper-item>trapdoor</paper-item>
+            <paper-item>trip_wire</paper-item>
+            <paper-item>trip_wire_source</paper-item>
+            <paper-item>vine</paper-item>   
+            <paper-item>waterlily</paper-item>
+            <paper-item>water_still</paper-item>
+            <paper-item>web</paper-item>
+            <paper-item>wheat_stage_0</paper-item>
+            <paper-item>wheat_stage_1</paper-item>
+            <paper-item>wheat_stage_2</paper-item>
+            <paper-item>wheat_stage_3</paper-item>  
+            <paper-item>wheat_stage_4</paper-item>
+            <paper-item>wheat_stage_5</paper-item>
+            <paper-item>wheat_stage_6</paper-item>
+            <paper-item>wheat_stage_7</paper-item>
+            <paper-item>wool_colored_black</paper-item>
+            <paper-item>wool_colored_blue</paper-item>
+            <paper-item>wool_colored_brown</paper-item>
+            <paper-item>wool_colored_cyan</paper-item>
+            <paper-item>wool_colored_gray</paper-item>
+            <paper-item>wool_colored_green</paper-item>
+            <paper-item>wool_colored_light_blue</paper-item>
+            <paper-item>wool_colored_lime</paper-item>
+            <paper-item>wool_colored_magenta</paper-item>
+            <paper-item>wool_colored_orange</paper-item>
+            <paper-item>wool_colored_pink</paper-item>
+            <paper-item>wool_colored_purple</paper-item>
+            <paper-item>wool_colored_red</paper-item>
+            <paper-item>wool_colored_silver</paper-item>
+            <paper-item>wool_colored_white</paper-item>
+            <paper-item>wool_colored_yellow</paper-item>
+        </core-menu>
+            </paper-dropdown>
+        </paper-dropdown-menu>
+        <paper-dropdown-menu label="Brush">
+            <paper-dropdown class="dropdown">
+                <core-menu selectedItem="{{brush}}" class="menu">
+                    <paper-item>Block</paper-item>
+                    <paper-item>Stairs</paper-item>
+                    <paper-item>Slab</paper-item>
+                    <paper-item>Fence</paper-item>
+                    <paper-item>Wall</paper-item>
+                </core-menu>
+            </paper-dropdown>
+        </paper-dropdown-menu>
+        
+        <core-label horizontal layout>
+            <paper-checkbox for checked="{{eraser}}"></paper-checkbox>
+            <div vertical layout>
+                <h4>Radiergummi</h4>
+            </div>
+        </core-label>
+        
+        <paper-button raised on-tap="{{clear}}">Alles Löschen</paper-button>
+        
+        </div>
+        <div center horizontal layout>
+            <div>Höhe</div>
+            <paper-slider value="{{height}}" max="100" min="5" on-core-change="{{resize}}" editable></paper-slider>
+            <div>Breite</div>
+            <paper-slider value="{{width}}" max="100" min="5" on-core-change="{{resize}}" editable></paper-slider>
+        </div>
+       
+        <paper-input-decorator label="Import URL" floatingLabel>
+            <input is="core-input" on-change="{{import}}" value="{{plan_png}}" committedValue="{{canvasurl}}">
+        </paper-input-decorator>        
+            
+        
+        <canvas id="plan" height="{{height * (16 + fieldborder) - fieldborder}}" width="{{width * (16 + fieldborder) - fieldborder}}" on-tap="{{print}}" style="border:1px solid #000000;"></canvas>
+        
+        
+        <paper-toast id="clear" role="alert" text="Plan geleert">
+            <div style="color: #eeff41;" on-tap="{{Undo}}">Undo</div>
+        </paper-toast>    
+        <paper-toast id="import" role="alert" text="Plan importiert">
+            <div style="color: #eeff41;" on-tap="{{Undo}}">Undo</div>
+        </paper-toast>   
+    </template>
+    <script src="2d-planer-minecraft.js"></script>
+</polymer-element>
