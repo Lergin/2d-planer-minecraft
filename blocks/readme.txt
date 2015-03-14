@@ -1,0 +1,1 @@
+Bitte füge hier die 16*16px großen Bilder der minecraft Blöcke ein die du im assets ordner jeder Minecraftversion findest
