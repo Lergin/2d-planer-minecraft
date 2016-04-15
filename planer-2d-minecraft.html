@@ -1,0 +1,142 @@
+<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="bower_components/paper-item/paper-item.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="bower_components/iron-icons/editor-icons.html">
+<link rel="import" href="bower_components/iron-label/iron-label.html">
+
+<dom-module id="planer-2d-minecraft">
+    <template>
+        <style>
+            paper-button {
+                background: #536DFE;
+                color: #212121;
+            }
+            paper-button:hover {
+                background: #C5CAE9;
+            }
+
+            paper-button[disabled],
+            paper-button[toggles][active] {
+                background: #303F9F;
+            }
+
+            paper-tabs, paper-toolbar {
+                background-color: #536DFE;
+                color: #212121;
+            }
+
+            paper-button svg {
+                display: -ms-inline-flexbox;
+display: -webkit-inline-flex;
+display: inline-flex;
+-ms-flex-align: center;
+-webkit-align-items: center;
+align-items: center;
+-ms-flex-pack: center;
+-webkit-justify-content: center;
+justify-content: center;
+position: relative;
+vertical-align: middle;
+fill: currentcolor;
+width: 24px;
+height: 24px;
+            }
+        </style>
+
+        <div style="width:100%" on-mousedown="activetrue" on-mouseup="activefalse">
+            <div style="margin-bottom: 5px">
+                <form onsubmit="return false">
+                    <paper-input-decorator floatinglabel="" label="Material">
+                        <input is="iron-input" type="search" value="{{material::input}}" list="material">
+                    </paper-input-decorator>
+
+                    <datalist id="material">
+                        <template is="dom-repeat" items="{{mat}}" as="name">
+                            <option value="{{name}}"></option>
+                        </template>
+                    </datalist>
+                </form>
+
+                <paper-tabs selected="{{brush}}" valueattr="label">
+                    <template is="dom-repeat" items="{{brushes}}" as="name">
+                        <paper-tab label="[[name]]">[[name]]</paper-tab>
+                    </template>
+                </paper-tabs>
+
+            </div>
+            <div>
+
+                <paper-button toggles active="{{eraser}}" raised>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                            fill="#000000"
+                            d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z"></path>
+                        </svg>
+                </paper-button>
+                <paper-button toggles active="{{layer}}" raised>
+                    <iron-icon icon="flip-to-front"></iron-icon>
+                </paper-button>
+                <paper-button raised on-tap="clear">
+                    <iron-icon icon="clear"></iron-icon>
+                </paper-button>
+                <paper-button raised on-tap="fill">
+                    <iron-icon icon="editor:format-paint"></iron-icon>
+                </paper-button>
+                <paper-button raised on-tap="upload">
+                    <iron-icon icon="editor:publish"></iron-icon>
+                </paper-button>
+                <a download="plan.png" target="_blank" href$="{{plan_png}}">
+                    <paper-button on-tap="download" raised="">
+                        <iron-icon icon="file-download"></iron-icon>
+                    </paper-button>
+                </a>
+                <div style="display: flex">
+                    <div>
+                        <div>Height</div>
+                        <paper-slider value="{{height}}" max="100" min="1" on-core-change="resize" editable></paper-slider>
+                    </div>
+                    <div>
+                        <div>Width</div>
+                        <paper-slider value="{{width}}" max="100" min="1" on-core-change="resize" editable></paper-slider>
+                    </div>
+                    <div>
+                        <div>Border width</div>
+                        <paper-slider value="{{fieldborder}}" max="10" min="0" on-core-change="resize" editable disabled$="{{edited}}"></paper-slider>
+                    </div>
+                </div>
+
+                <paper-input-decorator style="width:100%" label="Import URL" floatinglabel="">
+                    <input style="width:100%" is="core-input" on-change="import" value="{{plan_png::input}}" committedvalue="{{canvasurl}}">
+                </paper-input-decorator>
+            </div>
+
+            <canvas id="plan" height="{{_computeHeight(fieldborder, height)}}" width="{{_computeWidth(fieldborder, width)}}" on-mousemove="painthover" on-tap="paint" style="border:1px solid #000; background-color:white;"></canvas>
+
+            <canvas id="pre" style="display:none" width="16" height="16"></canvas>
+
+            <paper-toast id="clear" role="alert" text="Plan geleert">
+                <div style="color: #eeff41;" on-tap="Undo">Undo</div>
+            </paper-toast>
+            <paper-toast id="import" role="alert" text="Plan importiert">
+                <div style="color: #eeff41;" on-tap="Undo">Undo</div>
+            </paper-toast>
+            <paper-toast duration="10000000" autoclosedisabled="" id="upload" role="alert" text="uploaded to Imgur">
+                <a target="_blank" href$="{{_computeHref(imgurid)}}">
+                    <div style="color: #eeff41;">View</div>
+                </a>
+            </paper-toast>
+        </div>
+    </template>
+    <script src="planer-2d-minecraft.js"></script>
+</dom-module>
